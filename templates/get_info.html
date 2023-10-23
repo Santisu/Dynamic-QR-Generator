@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Access to QR{% endblock %}
+{% block body %}
+{% block header %}<h1 class="text-center">View QR info</h1>{% endblock %}
+<div class="row d-flex justify-content-center mb-2 text-center">
+
+  <div class="col-lg-6">
+    <p class="texto">Enter the 6-character path of the short URL for your QR code.</p>
+    <p class="texto">If you don't remember it, <strong>the name of the image of your QR code contains that path!</strong></p>
+    <p class="texto">Enter the password for your QR code.</p>
+    <p class="texto">If it's correct, you will be immediately redirected to the QR code information page.</p>
+    <h3>Want to create a QR code? Visit the <a href="/generate">QR code generator page</a>.</h3>     
+  </div>
+<div class="col-lg-6">
+<div class="row d-flex justify-content-center">
+  {% if message %}
+  <div class="card col-lg-6 py-2 mx-1 my-2">
+    <strong class="text-danger">{{ message.m_url }}</strong>
+    <strong class="text-danger">{{ message.m_pass }}</strong>
+    <strong class="text-danger">{{ message.m_match }}</strong>
+  </div>
+
+{% endif %}
+  <div class="card col-lg-6 py-2">
+    <form action="/get-info" method="post">
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="original" class="mx-auto my-2">Enter unique path:</label>
+          <input autocomplete="off" autofocus class="form-control mx-auto w-lg-auto" id="path" name="path"
+            placeholder="Ex: A2cD5f" type="text">
+        </div>
+        <div class="form-group">
+          <label for="original" class="mx-auto my-2">Password:</label>
+          <input autocomplete="off" class="form-control mx-auto w-lg-auto" id="pass1" name="password"
+            placeholder="password defined for path..." type="password">
+        </div>
+      </div>
+      <div class="d-flex justify-content-start">
+        <button class="btn btn-primary mx-auto" type="submit">Show info</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="row">
+  <section class="col-lg-12 inicio">
+    <div class="row justify-content-center d-flex">
+      <div class="cardo col-8 col-lg-5 my-sm-4 mb-lg-auto ">
+        <div class="card-body">
+          <h3 class="card-title mb-2 tipografia">Dynamic QR</h3>
+          <h4 class="card-text">
+            Effortlessly Generate, Edit, and Track QR Codes with short urls and simple designs
+          </h4>
+          <h3 class="text-center">
+            <a href="/generate">Generate a QR code now!</a>
+          </h3>
+        </div>
+      </div>
+      <div class="col-lg-6 my-4">
+        <p class="texto">
+          QR codes are a versatile tool for storing information, and their complexity is inherently linked to the amount
+          of data they need to contain. This complexity is reflected in the matrix of squares in the QR code image. The
+          more data they store, the more squares are required to encode that information. When a QR code contains a
+          large amount of data, it uses a denser square matrix, resulting in a more intricate and detailed QR code
+          image.
+        </p>
+        <p class="texto">
+          In contrast, our application focuses on creating QR codes with short URLs, resulting in simpler and
+          easier-to-scan QR code images, while the full information is stored in the database for quick and convenient
+          access.
+        </p>
+      </div>
+  </section>
+  <section>
+  </section>
+</div>
+{% endblock %}

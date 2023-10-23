@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Generate QR{% endblock %}
+{% block body %}
+{% block header %}<h1 class="text-center">Generate new QR</h1>{% endblock %}
+<div class="row d-flex justify-content-center">
+  <div class="col-lg-6">
+    <p class="texto">Enter the original URL that you want to redirect to using the generated QR code.</p>
+    <p class="texto">Remember the password so you can edit the redirection URL associated with that QR code.</p>
+    <p class="texto">Once you enter valid information, the QR code will be stored in the database and your session, allowing you to keep track of it and edit the referred URL.</p>
+    <p class="texto">You will be redirected immediately to the QR code info page once you create it.</p>
+    <h3>Already have a QR code? Visit the <a href="/get-info">QR code editing page</a>.</h3>    
+  </div>
+  <div class="col-lg-6">
+    <div class="row d-flex justify-content-center mb-2 text-center">
+      {% if message %}
+      <div class="card col-lg-6 py-2 mx-1 my-2">
+        <strong class="text-danger">{{ message.m_url }}</strong>
+        <strong class="text-danger">{{ message.m_pass }}</strong>
+        <strong class="text-danger">{{ message.m_match }}</strong>
+      </div>
+      {% endif %}
+      <div class="card col-lg-6 py-2 mx-auto">
+        <form action="/generate" method="post">
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="original_url" class="mx-auto my-2">Enter original url:</label>
+              <input autocomplete="off" autofocus class="form-control mx-auto w-lg-auto" id="original_url"
+                name="original_url" placeholder="https://cs50.harvard.edu/x/2023/" type="text">
+            </div>
+            <div class="form-group">
+              <label for="password1" class="mx-auto my-2">Password:</label>
+              <input autocomplete="off" class="form-control mx-auto w-lg-auto" id="pass1" name="password1"
+                placeholder="Password" type="password">
+            </div>
+            <div class="form-group">
+              <label for="password2" class="mx-auto my-2">Confirm password:</label>
+              <input autocomplete="off" class="form-control mx-auto w-lg-auto" id="pass2" name="password2"
+                placeholder="Confirm password" type="password">
+            </div>
+          </div>
+          <div class="d-flex justify-content-start">
+            <button class="btn btn-primary mx-auto" type="submit">Generate</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

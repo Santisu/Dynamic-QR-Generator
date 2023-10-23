@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <link rel="icon" type="image/x-icon" href="/static/icons/favicon.ico">
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navnav">
+    <div class="container-fluid">
+      <a class="navbar-brand ms-2" href="/"><img class="icon" src="/static/icons/android-chrome-512x512.png"
+          alt="icon" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item navli">
+            <a class="nav-link active navboton rounded-4 mx-1" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item navli">
+            <a class="nav-link active navboton rounded-4 mx-1" aria-current="page" href="/generate">Generate QR</a>
+          </li>
+          <li class="nav-item navli">
+            <a class="nav-link active navboton rounded-4 mx-1" aria-current="page" href="/get-info">Edit QR</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          {% if session['qr_short_url'] %}
+          <li class="nav-item navli">
+            <a class="nav-link active navboton rounded-4 mx-1" aria-current="page" href="/current-session">Current QR
+              info</a>
+          </li>
+          <li class="nav-item navli">
+            <a class="nav-link active navboton rounded-4 mx-1" aria-current="page" href="/clear-session">Clear
+              session</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="cuerpo container my-3">
+    {% block body %}
+    <header>{% block header %}{% endblock %}</header>
+    {% endblock %}
+  </div>
+  <footer id="sticky-footer" class="flex-shrink-0 py-4 text-white-50 footerbase">
+    <div class="row row-cols-1 row-cols-md-3 g-4 futer">
+      <div class="col-12">
+        <div id="card-footer" class="card h-100">
+          <div class="card-body tarjeta">
+            <h5 class="card-title text-center">Dynamic QR Generator</h5>
+            <p class="card-text">CS-50 2023 Final project</p>
+            <p class="card-text">Create Dynamic QR Codes on the Fly</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div id="card-footer" class="card h-100">
+          <div class="card-body tarjeta">
+            <h5 class="card-title text-center">Contact</h5>
+            <ul>
+              <li>
+                <img class="icono" src="/static/icons/adress.png" alt="Address" />
+                Osorno, Chile
+              </li>
+              <li>
+                <img class="icono" src="/static/icons/email.png" alt="email" />
+                esantibra@gmail.com
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div id="card-footer" class="card h-100">
+          <div class="card-body tarjeta text-center">
+            <h5 class="card-title text-center">Social</h5>
+            <div class="d-flex">
+              <div class="">
+                <a class="d-inline-flex mb-2 rrss" href="https://www.instagram.com/bigo.san">
+                  <img class="redesimg mb-4" src="/static/icons/ig.png" alt=" instagram" width="50px" height="auto" />
+                </a>
+              </div>
+              <div class="">
+                <a class="d-inline-flex mb-2 rrss" href="https://www.linkedin.com/in/estebansantibanez/">
+                  <img class="redesimg mb-4" src="/static/icons/icon_linkedin.png" alt=" LinkedIn" width="50px"
+                    height="auto" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="brand" class="container text-center">
+      <small>Esteban Santibáñez B &copy;</small>
+    </div>
+  </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+</html>
